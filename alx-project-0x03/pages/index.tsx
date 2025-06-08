@@ -1,30 +1,21 @@
-import Button from "@/components/common/Button";
+import { PageRouteProps } from "@/interface";
 import { useRouter } from "next/router";
-
-interface PageRouteProps {
-  pageRoute: string;
-}
+import Button from "@/components/common/Button";
 
 export default function Home() {
   const router = useRouter();
 
-  // Imperative routing with useRouter
   const routeToNextPage = ({ pageRoute }: PageRouteProps) => {
-    router.push(pageRoute, undefined, { shallow: false });
+    router.push(pageRoute);
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center text-center">
       {/* Welcome Message */}
-      <h1 className="text-4xl font-bold text-gray-800 mb-4">
-        Welcome to Splash App!
-      </h1>
-      <p className="text-lg text-gray-600 mb-8">
-        Your one-stop platform for everything AI you need. Start exploring by
-        navigating to our features below.
-      </p>
+      <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to Splash App!</h1>
+      <p className="text-lg text-gray-600 mb-8">Your one-stop platform for AI-powered tools. Start exploring below!</p>
 
-      {/* Navigation Options */}
+      {/* Navigation Buttons */}
       <div className="flex gap-6">
         <Button
           action={() => routeToNextPage({ pageRoute: "/generate-text-ai" })}
